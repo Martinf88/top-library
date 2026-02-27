@@ -113,7 +113,7 @@ button {
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap");
 
 body {
-  padding: 2rem 4rem;
+  padding: 1rem 0.5rem;
   min-height: 100vh;
   background: var(--color-bg);
   color: var(--color-text);
@@ -394,4 +394,16 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+@media (min-width: 401px) {
+  body {
+    padding: 1rem 2rem;
+  }
+}
+
+@media (min-width: 625px) {
+  body {
+    padding: 2rem 4rem;
+  }
 }
