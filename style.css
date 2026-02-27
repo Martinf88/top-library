@@ -269,14 +269,17 @@ section {
 
 /* Dialog */
 dialog {
-  display: flex;
-  flex-direction: column;
   width: 500px;
   position: relative;
   background: var(--color-bg);
   border: none;
   border-radius: 10px;
   color: var(--color-text);
+}
+
+.dialog-content-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 dialog::backdrop {
