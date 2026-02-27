@@ -9,7 +9,11 @@
   <body>
     <header>
       <h1>My Library</h1>
-      <button command="show-modal" commandfor="add-book-dialog">
+      <button
+        class="add-book-btn"
+        command="show-modal"
+        commandfor="add-book-dialog"
+      >
         + Add book
       </button>
 
@@ -43,6 +47,7 @@
           <input name="read-or-not" id="read-or-not" type="checkbox" />
           <span class="slider round"></span>
         </label>
+        <button class="add-book-btn">Add Book</button>
       </dialog>
     </header>
     <main>
