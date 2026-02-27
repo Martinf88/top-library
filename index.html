@@ -9,6 +9,41 @@
   <body>
     <header>
       <h1>My Library</h1>
+      <button command="show-modal" commandfor="add-book-dialog">
+        + Add book
+      </button>
+
+      <dialog id="add-book-dialog">
+        <h2>Add a Book</h2>
+        <button commandfor="add-book-dialog" command="close">x</button>
+
+        <label for="book-title">Title</label>
+        <input
+          type="text"
+          name="book-title"
+          id="book-title"
+          placeholder="Book title"
+        />
+        <label for="author-name">Author</label>
+        <input
+          type="text"
+          name="author-name"
+          id="author-name"
+          placeholder="Author name"
+        />
+        <label for="number-of-pages">Pages</label>
+        <input
+          type="text"
+          name="number-of-pages"
+          id="number-of-pages"
+          placeholder="Number of pages"
+        />
+        <label for="read-or-not">Already read?</label>
+        <label class="switch">
+          <input name="read-or-not" id="read-or-not" type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </dialog>
     </header>
     <main>
       <section id="library-section"></section>
