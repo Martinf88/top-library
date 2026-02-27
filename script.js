@@ -24,7 +24,6 @@ myLibrary.push(
 );
 
 function addBookToLibrary(title, author, pages, read) {
-  // take params, create a book then store it in the array
   const newBook = new Book(title, author, pages, read);
 
   myLibrary.unshift(newBook);
@@ -37,23 +36,36 @@ function renderBooks() {
     const newDiv = document.createElement("div");
     newDiv.classList.add("card");
 
+    const newMainWrapper = document.createElement("div");
+    newMainWrapper.classList.add("main-wrapper");
+
     const newTitle = document.createElement("h2");
     newTitle.classList.add("title");
     newTitle.innerHTML = book.title;
+
+    const newTextWrapper = document.createElement("div");
+    newTextWrapper.classList.add("text-wrapper");
 
     const newAuthor = document.createElement("p");
     newAuthor.innerHTML = book.author;
     newAuthor.classList.add("author");
 
+    const newSpacer = document.createElement("p");
+    newSpacer.innerHTML = "-";
+
     const newPages = document.createElement("p");
     newPages.classList.add("pages");
     newPages.innerHTML = book.pages;
 
+    newTextWrapper.append(newAuthor, newSpacer, newPages);
+    newMainWrapper.append(newTitle, newTextWrapper);
+
     const readIcon = document.createElement("span");
-    readIcon.classList.add("read-icon");
+    readIcon.classList.toggle("read-icon", book.read);
+    readIcon.classList.toggle("not-read-icon", !book.read);
     readIcon.textContent = book.read ? "✅" : "❌";
 
-    newDiv.append(newTitle, newAuthor, newPages, readIcon);
+    newDiv.append(readIcon, newMainWrapper);
 
     librarySection.appendChild(newDiv);
 

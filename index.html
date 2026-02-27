@@ -8,51 +8,65 @@
   </head>
   <body>
     <header>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        class="open-book-icon"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"
+        />
+      </svg>
       <h1>My Library</h1>
+      <p>3 books - 2 read</p>
+    </header>
+    <main>
       <button
-        class="add-book-btn"
+        class="add-book-btn open-dialog"
         command="show-modal"
         commandfor="add-book-dialog"
       >
         + Add book
       </button>
-
-      <dialog id="add-book-dialog">
-        <h2>Add a Book</h2>
-        <button commandfor="add-book-dialog" command="close">x</button>
-
-        <label for="book-title">Title</label>
-        <input
-          type="text"
-          name="book-title"
-          id="book-title"
-          placeholder="Book title"
-        />
-        <label for="author-name">Author</label>
-        <input
-          type="text"
-          name="author-name"
-          id="author-name"
-          placeholder="Author name"
-        />
-        <label for="number-of-pages">Pages</label>
-        <input
-          type="text"
-          name="number-of-pages"
-          id="number-of-pages"
-          placeholder="Number of pages"
-        />
-        <label for="read-or-not">Already read?</label>
-        <label class="switch">
-          <input name="read-or-not" id="read-or-not" type="checkbox" />
-          <span class="slider round"></span>
-        </label>
-        <button class="add-book-btn">Add Book</button>
-      </dialog>
-    </header>
-    <main>
       <section id="library-section"></section>
     </main>
+    <dialog id="add-book-dialog">
+      <h2>Add a Book</h2>
+      <button commandfor="add-book-dialog" command="close">x</button>
+
+      <label for="book-title">Title</label>
+      <input
+        type="text"
+        name="book-title"
+        id="book-title"
+        placeholder="Book title"
+      />
+      <label for="author-name">Author</label>
+      <input
+        type="text"
+        name="author-name"
+        id="author-name"
+        placeholder="Author name"
+      />
+      <label for="number-of-pages">Pages</label>
+      <input
+        type="text"
+        name="number-of-pages"
+        id="number-of-pages"
+        placeholder="Number of pages"
+      />
+      <label for="read-or-not">Already read?</label>
+      <label class="switch">
+        <input name="read-or-not" id="read-or-not" type="checkbox" />
+        <span class="slider round"></span>
+      </label>
+      <button class="add-book-btn">Add Book</button>
+    </dialog>
 
     <script src="script.js"></script>
   </body>
