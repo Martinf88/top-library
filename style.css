@@ -157,12 +157,18 @@ main {
 
 .add-book-btn {
   background-color: var(--color-primary);
+  border: 2px solid var(--color-primary);
   color: white;
   padding: 10px 32px;
   border-radius: 10px;
   font-size: 14px;
   align-self: center;
   margin-bottom: 1rem;
+}
+
+.add-book-btn:hover {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
 }
 
 section {
@@ -173,7 +179,7 @@ section {
 .card {
   background-color: var(--color-surface);
   border-radius: 10px;
-  border: 1px solid var(--color-border);
+  outline: 2px solid var(--color-border);
   padding: 12px 18px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
