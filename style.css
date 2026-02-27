@@ -155,6 +155,10 @@ main {
   flex-direction: column;
 }
 
+.open-dialog-btn {
+  align-self: center;
+}
+
 .add-book-btn {
   background-color: var(--color-primary);
   border: 2px solid var(--color-primary);
@@ -162,7 +166,6 @@ main {
   padding: 10px 32px;
   border-radius: 10px;
   font-size: 14px;
-  align-self: center;
   margin-bottom: 1rem;
 }
 
@@ -266,7 +269,63 @@ section {
 
 /* Dialog */
 dialog {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  position: relative;
   background: var(--color-bg);
+  border: none;
+  border-radius: 10px;
+  color: var(--color-text);
+}
+
+dialog::backdrop {
+  background-color: black;
+  opacity: 0.8;
+}
+
+dialog h2 {
+  margin-bottom: 1rem;
+  font-size: 20px;
+}
+
+dialog button:first-of-type {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  width: 18px;
+}
+
+dialog label {
+  margin-bottom: 0.2rem;
+}
+
+input[type="text"] {
+  height: 2.5rem;
+  border-radius: 10px;
+  padding: 0 10px;
+  border: 1px solid var(--color-border);
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border: 2px solid var(--color-primary);
+}
+
+dialog label,
+input {
+  font-size: 14px;
+}
+
+dialog input,
+.switch-wrapper {
+  margin-bottom: 1rem;
+}
+
+.switch-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 /*Switch toggle from W3schools*/
 
@@ -274,8 +333,8 @@ dialog {
 .switch {
   position: relative;
   display: inline-block;
-  width: 60px;
-  height: 34px;
+  width: 45px;
+  height: 22px;
 }
 
 /* Hide default HTML checkbox */
@@ -294,7 +353,7 @@ dialog {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ccc;
+  background-color: hsl(40, 40%, 74%);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -302,27 +361,27 @@ dialog {
 .slider:before {
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
+  height: 20px;
+  width: 20px;
+  left: 1px;
+  bottom: 1px;
+  background-color: var(--color-surface);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #2196f3;
+  background-color: var(--color-primary);
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
+  box-shadow: 0 0 1px var(--color-primary);
 }
 
 input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
+  -webkit-transform: translateX(23px);
+  -ms-transform: translateX(23px);
+  transform: translateX(23px);
 }
 
 /* Rounded sliders */

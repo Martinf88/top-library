@@ -27,7 +27,7 @@
     </header>
     <main>
       <button
-        class="add-book-btn open-dialog"
+        class="add-book-btn open-dialog-btn"
         command="show-modal"
         commandfor="add-book-dialog"
       >
@@ -37,7 +37,22 @@
     </main>
     <dialog id="add-book-dialog">
       <h2>Add a Book</h2>
-      <button commandfor="add-book-dialog" command="close">x</button>
+      <button commandfor="add-book-dialog" command="close">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18 18 6M6 6l12 12"
+          />
+        </svg>
+      </button>
 
       <label for="book-title">Title</label>
       <input
@@ -60,11 +75,13 @@
         id="number-of-pages"
         placeholder="Number of pages"
       />
-      <label for="read-or-not">Already read?</label>
-      <label class="switch">
-        <input name="read-or-not" id="read-or-not" type="checkbox" />
-        <span class="slider round"></span>
-      </label>
+      <div class="switch-wrapper">
+        <label for="read-or-not">Already read?</label>
+        <label class="switch">
+          <input name="read-or-not" id="read-or-not" type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </div>
       <button class="add-book-btn">Add Book</button>
     </dialog>
 
