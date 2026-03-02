@@ -1,6 +1,7 @@
 const librarySection = document.getElementById("library-section");
 const bookDialog = document.getElementById("book-dialog");
 const bookForm = document.getElementById("book-form");
+const librarySummary = document.getElementById("library-summary");
 
 const DELETE_ICON_SVG = `
       <svg
@@ -107,6 +108,7 @@ function updateReadButton(button, book) {
   button.classList.toggle("read-icon", book.read);
   button.classList.toggle("not-read-icon", !book.read);
   button.innerHTML = book.read ? READ_ICON_SVG : NOT_READ_ICON_SVG;
+  updateLibrarySummary();
 }
 
 function deleteBook(book, bookCard) {
@@ -114,11 +116,20 @@ function deleteBook(book, bookCard) {
   myLibrary.splice(index, 1);
 
   bookCard.remove();
+  updateLibrarySummary();
 }
 
 function renderBooks() {
   librarySection.innerHTML = "";
   myLibrary.forEach(createBookCard);
+  updateLibrarySummary();
+}
+
+function updateLibrarySummary() {
+  const totalBooks = myLibrary.length;
+  const readBooks = myLibrary.filter((b) => b.read).length;
+
+  librarySummary.innerHTML = `${totalBooks} books - ${readBooks} read`;
 }
 
 bookForm.addEventListener("submit", (e) => {

@@ -166,7 +166,7 @@ main {
   align-self: center;
 }
 
-.submit-book-btn {
+.primary-btn {
   background-color: var(--color-primary);
   color: white;
   padding: 10px 32px;
@@ -175,7 +175,7 @@ main {
   margin-bottom: 1rem;
 }
 
-.submit-book-btn:hover {
+.primary-btn:hover {
   background-color: var(--color-primary-hover);
 }
 
