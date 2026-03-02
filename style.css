@@ -100,9 +100,11 @@ button {
 
   /* Primary brown (buttons, links, accents) */
   --color-primary: #8b4a1f;
+  --color-primary-hover: hsl(24, 64%, 36%);
 
   /* Soft green accent (optional highlight color) */
   --color-accent: #4a7a64;
+  --color-accent-hover: hsl(153, 24%, 45%);
 
   /* Borders */
   --color-border: #e6dfd2;
@@ -166,7 +168,6 @@ main {
 
 .submit-book-btn {
   background-color: var(--color-primary);
-  border: 2px solid var(--color-primary);
   color: white;
   padding: 10px 32px;
   border-radius: 10px;
@@ -175,8 +176,7 @@ main {
 }
 
 .submit-book-btn:hover {
-  background-color: var(--color-surface);
-  color: var(--color-primary);
+  background-color: var(--color-primary-hover);
 }
 
 section {
@@ -200,6 +200,10 @@ section {
   cursor: pointer;
 }
 
+.main-wrapper {
+  flex-grow: 1;
+}
+
 .card h2 {
   font-size: 18px;
 }
@@ -216,12 +220,13 @@ section {
 
 .read-icon,
 .not-read-icon {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 8px;
 }
 
 .read-icon {
@@ -237,9 +242,7 @@ section {
 
 .read-icon:hover {
   cursor: pointer;
-  background-color: var(--color-surface);
-  color: var(--color-accent);
-  border: 2px solid var(--color-accent);
+  background-color: var(--color-accent-hover);
 }
 
 .not-read-icon:hover {
@@ -248,19 +251,11 @@ section {
   cursor: pointer;
 }
 
-.edit-wrapper {
-  margin-left: auto;
-  display: flex;
-  gap: 2rem;
-}
-
-.edit-icon,
 .delete-icon {
   width: 20px;
   transition: transform 0.2s;
 }
 
-.edit-icon:hover,
 .delete-icon:hover {
   transform: scale(1.3);
   cursor: pointer;
