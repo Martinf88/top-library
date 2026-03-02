@@ -164,7 +164,7 @@ main {
   align-self: center;
 }
 
-.add-book-btn {
+.submit-book-btn {
   background-color: var(--color-primary);
   border: 2px solid var(--color-primary);
   color: white;
@@ -174,7 +174,7 @@ main {
   margin-bottom: 1rem;
 }
 
-.add-book-btn:hover {
+.submit-book-btn:hover {
   background-color: var(--color-surface);
   color: var(--color-primary);
 }
@@ -280,7 +280,7 @@ dialog {
   color: var(--color-text);
 }
 
-.dialog-content-wrapper {
+dialog form {
   display: flex;
   flex-direction: column;
 }
@@ -295,14 +295,14 @@ dialog h2 {
   font-size: 20px;
 }
 
-dialog button:first-of-type {
+dialog .close-btn {
   position: absolute;
   right: 15px;
   top: 10px;
   width: 18px;
 }
 
-dialog label {
+form label {
   margin-bottom: 0.2rem;
 }
 
@@ -318,12 +318,12 @@ input[type="text"]:focus {
   border: 2px solid var(--color-primary);
 }
 
-dialog label,
+form label,
 input {
   font-size: 14px;
 }
 
-dialog input,
+form input,
 .switch-wrapper {
   margin-bottom: 1rem;
 }
