@@ -1,4 +1,6 @@
 const librarySection = document.getElementById("library-section");
+const bookDialog = document.getElementById("book-dialog");
+const bookForm = document.getElementById("book-form");
 
 function Book(title, author, pages, read) {
   if (!new.target) {
@@ -26,58 +28,56 @@ myLibrary.push(
 function addBookToLibrary(title, author, pages, read) {
   const newBook = new Book(title, author, pages, read);
 
-  myLibrary.unshift(newBook);
+  myLibrary.push(newBook);
+  renderBooks();
 }
 
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, true);
+function createBookCard(book) {
+  const newDiv = document.createElement("div");
+  newDiv.classList.add("card");
 
-function renderBooks() {
-  myLibrary.forEach((book) => {
-    const newDiv = document.createElement("div");
-    newDiv.classList.add("card");
+  const newMainWrapper = document.createElement("div");
+  newMainWrapper.classList.add("main-wrapper");
 
-    const newMainWrapper = document.createElement("div");
-    newMainWrapper.classList.add("main-wrapper");
+  const newTitle = document.createElement("h2");
+  newTitle.classList.add("title");
+  newTitle.innerHTML = book.title;
 
-    const newTitle = document.createElement("h2");
-    newTitle.classList.add("title");
-    newTitle.innerHTML = book.title;
+  const newTextWrapper = document.createElement("div");
+  newTextWrapper.classList.add("text-wrapper");
 
-    const newTextWrapper = document.createElement("div");
-    newTextWrapper.classList.add("text-wrapper");
+  const newAuthor = document.createElement("p");
+  newAuthor.innerHTML = book.author;
+  newAuthor.classList.add("author");
 
-    const newAuthor = document.createElement("p");
-    newAuthor.innerHTML = book.author;
-    newAuthor.classList.add("author");
+  const newSpacer = document.createElement("p");
+  newSpacer.innerHTML = "-";
 
-    const newSpacer = document.createElement("p");
-    newSpacer.innerHTML = "-";
+  const newPages = document.createElement("p");
+  newPages.classList.add("pages");
+  newPages.innerHTML = book.pages;
 
-    const newPages = document.createElement("p");
-    newPages.classList.add("pages");
-    newPages.innerHTML = book.pages;
+  newTextWrapper.append(newAuthor, newSpacer, newPages);
+  newMainWrapper.append(newTitle, newTextWrapper);
 
-    newTextWrapper.append(newAuthor, newSpacer, newPages);
-    newMainWrapper.append(newTitle, newTextWrapper);
+  const readIcon = document.createElement("button");
+  readIcon.classList.toggle("read-icon", book.read);
+  readIcon.classList.toggle("not-read-icon", !book.read);
+  readIcon.textContent = book.read ? "✅" : "❌";
 
-    const readIcon = document.createElement("button");
-    readIcon.classList.toggle("read-icon", book.read);
-    readIcon.classList.toggle("not-read-icon", !book.read);
-    readIcon.textContent = book.read ? "✅" : "❌";
+  const editWrapper = document.createElement("div");
+  editWrapper.classList.add("edit-wrapper");
 
-    const editWrapper = document.createElement("div");
-    editWrapper.classList.add("edit-wrapper");
-
-    const editIcon = document.createElement("button");
-    editIcon.classList.add("edit-icon");
-    editIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  const editIcon = document.createElement("button");
+  editIcon.classList.add("edit-icon");
+  editIcon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125" />
 </svg>
 `;
 
-    const deleteIcon = document.createElement("button");
-    deleteIcon.classList.add("delete-icon");
-    deleteIcon.innerHTML = `
+  const deleteIcon = document.createElement("button");
+  deleteIcon.classList.add("delete-icon");
+  deleteIcon.innerHTML = `
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -94,14 +94,46 @@ function renderBooks() {
       </svg>
     `;
 
-    editWrapper.append(editIcon, deleteIcon);
+  editWrapper.append(editIcon, deleteIcon);
 
-    newDiv.append(readIcon, newMainWrapper, editWrapper);
+  newDiv.append(readIcon, newMainWrapper, editWrapper);
 
-    librarySection.appendChild(newDiv);
-
-    console.log(newDiv);
-  });
+  librarySection.appendChild(newDiv);
 }
+
+function renderBooks() {
+  librarySection.innerHTML = "";
+  myLibrary.forEach(createBookCard);
+}
+
+bookForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  let bookTitle = document.getElementById("book-title");
+  let authorName = document.getElementById("author-name");
+  let numberOfPages = document.getElementById("number-of-pages");
+  let readOrNot = document.getElementById("read-or-not");
+
+  if (
+    bookTitle.value == "" ||
+    authorName.value == "" ||
+    numberOfPages.value == ""
+  ) {
+    alert("Make sure to fill in all fields.");
+  } else {
+    console.log(
+      `${bookTitle.value}, ${authorName.value}, ${numberOfPages.value}, ${readOrNot.checked}`,
+    );
+    addBookToLibrary(
+      bookTitle.value,
+      authorName.value,
+      numberOfPages.value,
+      readOrNot.checked,
+    );
+  }
+
+  bookForm.reset();
+  bookDialog.close();
+});
 
 renderBooks();
