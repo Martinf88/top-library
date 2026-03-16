@@ -22,23 +22,19 @@ const DELETE_ICON_SVG = `
 const READ_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-check-icon lucide-book-open-check"><path d="M12 21V7"/><path d="m16 12 2 2 4-4"/><path d="M22 6V4a1 1 0 0 0-1-1h-5a4 4 0 0 0-4 4 4 4 0 0 0-4-4H3a1 1 0 0 0-1 1v13a1 1 0 0 0 1 1h6a3 3 0 0 1 3 3 3 3 0 0 1 3-3h6a1 1 0 0 0 1-1v-1.3"/></svg>`;
 const NOT_READ_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open-icon lucide-book-open"><path d="M12 7v14"/><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"/></svg>`;
 
-function Book(title, author, pages, read) {
-  if (!new.target) {
-    throw new Error(
-      "You must include the 'new' keyword when calling this function",
-    );
+class Book {
+  constructor(title, author, pages, read) {
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = Boolean(read);
   }
 
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = Boolean(read);
+  toggleRead() {
+    this.read = !this.read;
+  }
 }
-
-Book.prototype.toggleRead = function () {
-  this.read = !this.read;
-};
 
 const myLibrary = [];
 
@@ -147,9 +143,6 @@ bookForm.addEventListener("submit", (e) => {
   ) {
     alert("Make sure to fill in all fields.");
   } else {
-    console.log(
-      `${bookTitle.value}, ${authorName.value}, ${numberOfPages.value}, ${readOrNot.checked}`,
-    );
     addBookToLibrary(
       bookTitle.value,
       authorName.value,
